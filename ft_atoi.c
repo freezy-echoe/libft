@@ -9,6 +9,8 @@
 /*   Updated: 2025/05/27 11:36:45 by bkarimov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+
 int	ft_atoi(const char *nptr)
 {
 	int	count;

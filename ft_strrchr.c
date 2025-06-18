@@ -9,7 +9,7 @@
 /*   Updated: 2025/05/26 14:13:09 by bkarimov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-unsigned int	ft_strlen(char *str);
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

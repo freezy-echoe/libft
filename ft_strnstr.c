@@ -6,32 +6,30 @@
 /*   By: bkarimov <bkarimov@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 13:08:40 by bkarimov          #+#    #+#             */
-/*   Updated: 2025/05/26 13:47:51 by bkarimov         ###   ########.fr       */
+/*   Updated: 2025/06/07 12:05:02 by bkarimov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strnstr(const char *big, const char *little, unsigned int len)
+#include "libft.h"
+
+char	*ft_strnstr(const char *b, const char *l, size_t len)
 {
-	unsigned int	count;
-	unsigned int	i;
+	size_t	count;
+	size_t	i;
 
 	count = 0;
-	if (little[0] == '\0')
+	if ((b == NULL || l == NULL) && len == 0)
+		return (0);
+	if (l[0] == '\0')
+		return ((char *)b);
+	while (b[count] != '\0' && count < len)
 	{
-		return ((char *)big);
-	}
-	while (big[count] != '\0' && count < len)
-	{
-		if (big[count] == little[0])
+		if (b[count] == l[0])
 		{
 			i = 1;
-			while (little[i] && big[count + i] == little[i] && count + i < len)
-			{
+			while (l[i] && b[count + i] == l[i] && count + i < len)
 				i++;
-			}
-			if (little[i] == '\0')
-			{
-				return ((char *) &big[count]);
-			}
+			if (l[i] == '\0')
+				return ((char *) &b[count]);
 		}
 		++count;
 	}

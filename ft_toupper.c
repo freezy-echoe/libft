@@ -9,11 +9,11 @@
 /*   Updated: 2025/05/26 12:40:48 by bkarimov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isalpha(int c);
+#include "libft.h"
 
 int	ft_toupper(int c)
 {
-	if (ft_isalpha(c))
+	if (c >= 'a' && c <= 'z')
 	{
 		return (c - 32);
 	}

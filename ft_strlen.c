@@ -1,11 +1,24 @@
-unsigned int ft_strlen(char *str)
-{
-    unsigned int c;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bkarimov <bkarimov@student.42prague.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/05 09:56:10 by bkarimov          #+#    #+#             */
+/*   Updated: 2025/06/06 14:43:33 by bkarimov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "libft.h"
 
-    c = 0;
-    while(str[c])
-    {
-        c++;
-    }
-    return c;
+size_t	ft_strlen(const char *str)
+{
+	size_t	c;
+
+	c = 0;
+	while (str[c])
+	{
+		c++;
+	}
+	return (c);
 }

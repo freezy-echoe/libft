@@ -1,37 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkarimov <bkarimov@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 13:57:21 by bkarimov          #+#    #+#             */
-/*   Updated: 2025/06/18 10:15:35 by bkarimov         ###   ########.fr       */
+/*   Created: 2025/06/06 13:28:23 by bkarimov          #+#    #+#             */
+/*   Updated: 2025/06/06 14:23:54 by bkarimov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_substr(char const *s, size_t start, size_t len)
+static int	count_digits(long n)
 {
-	char	*sub;
-	size_t	sub_len;
+	int	len;
 
-	if (!s)
-		return (NULL);
-	if (start >= (unsigned int)ft_strlen(s))
-		return (ft_strdup(""));
-	sub_len = 0;
-	sub = malloc(len + 1);
-	if (!sub)
+	len = (n <= 0);
+	while (n)
 	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	long int	nbr;
+	long int	len;
+	char		*num;
+
+	nbr = (long) n;
+	len = count_digits(nbr);
+	num = malloc(len + 1);
+	if (!num)
 		return (NULL);
-	}
-	while (sub_len < len)
+	num[len--] = '\0';
+	if (nbr == 0)
+		num[0] = '0';
+	if (nbr < 0)
 	{
-		sub[sub_len] = s[start];
-		sub_len++;
-		start++;
+		num[0] = '-';
+		nbr = -nbr;
 	}
-	sub[sub_len] = '\0';
-	return (sub);
+	while (nbr > 0)
+	{
+		num[len--] = (nbr % 10) + '0';
+		nbr /= 10;
+	}
+	return (num);
 }

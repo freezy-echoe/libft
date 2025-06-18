@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkarimov <bkarimov@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 11:23:36 by bkarimov          #+#    #+#             */
-/*   Updated: 2025/06/16 10:58:19 by bkarimov         ###   ########.fr       */
+/*   Created: 2025/06/05 11:42:30 by bkarimov          #+#    #+#             */
+/*   Updated: 2025/06/16 11:01:02 by bkarimov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memset(void *dest, int ch, size_t count)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned char	*str;
-	size_t			c;
+	char	*str;
+	size_t	start;
+	size_t	i;
+	size_t	end;
 
-	str = dest;
-	c = 0;
-	while (c < count)
+	if (!s1 || !set)
+		return (NULL);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (end > start && (ft_strchr(set, s1[end - 1])))
+		end--;
+	str = malloc(end - start + 1);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (start < end)
 	{
-		str[c] = (unsigned char)ch;
-		c++;
+		str[i] = s1[start];
+		i++;
+		start++;
 	}
+	str[i] = '\0';
 	return (str);
 }

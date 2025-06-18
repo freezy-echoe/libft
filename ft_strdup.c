@@ -6,18 +6,16 @@
 /*   By: bkarimov <bkarimov@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 10:54:08 by bkarimov          #+#    #+#             */
-/*   Updated: 2025/05/27 13:42:17 by bkarimov         ###   ########.fr       */
+/*   Updated: 2025/06/16 10:59:49 by bkarimov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-
-unsigned int	ft_strlen(char *str);
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
-	unsigned int	size;
-	unsigned int	n;
-	char			*s_dub;
+	size_t	size;
+	size_t	n;
+	char	*s_dub;
 
 	n = 0;
 	size = ft_strlen((char *)s);

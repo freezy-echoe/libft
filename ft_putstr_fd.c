@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkarimov <bkarimov@student.42prague.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/26 13:56:09 by bkarimov          #+#    #+#             */
-/*   Updated: 2025/05/26 14:05:42 by bkarimov         ###   ########.fr       */
+/*   Created: 2025/06/07 10:13:14 by bkarimov          #+#    #+#             */
+/*   Updated: 2025/06/07 12:06:37 by bkarimov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int	count;
-
-	count = 0;
-	while (s[count])
+	if (!s)
+		return ;
+	while (*s)
 	{
-		if (s[count] == (char)c)
-		{
-			return ((char *) &s[count]);
-		}
-		++count;
+		write (fd, s, 1);
+		s++;
 	}
-	if (s[count] == (char)c)
-	{
-		return ((char *) &s[count]);
-	}
-	return (0);
 }
